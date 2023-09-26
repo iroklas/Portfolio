@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "../../util/mousePos";
+import "./cursor.css";
 
 interface ParticlesProps {
     className?: string;
@@ -26,6 +27,7 @@ export default function Particles({
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+	const [position, setPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
 		if (canvasRef.current) {
@@ -47,6 +49,21 @@ export default function Particles({
 	useEffect(() => {
 		initCanvas();
 	}, [refresh]);
+
+	useEffect(() => {
+		const updatePosition = (e) => {
+		  setPosition({
+			x: e.clientX,
+			y: e.clientY
+		  });
+		};
+	
+		window.addEventListener('mousemove', updatePosition);
+		
+		return () => {
+		  window.removeEventListener('mousemove', updatePosition);
+		};
+	}, []);
 
 	const initCanvas = () => {
 		resizeCanvas();
