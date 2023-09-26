@@ -41,7 +41,7 @@ export default function Page() {
 			/>
 
             <div className="flex items-center justify-center">
-                <div className="flex flex-col items-center justify-center text-center w-[30rem] h-[50vh] pl-5 pr-5">
+                <div className="flex flex-col items-center justify-center text-center w-[35rem] h-[50vh] pl-5 pr-5">
 
                     <div className="h-auto flex flex-row gap-3">
                         <a href="./Resume"><p className="text-gray-500">Resume</p></a>
