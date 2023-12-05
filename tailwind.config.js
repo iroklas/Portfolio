@@ -20,7 +20,9 @@ module.exports = {
       dark: {
         colors: {
           danger: "#dd0525",
-          background: "#171717"
+          background: "#232726",
+          secondBackground: "#202423",
+          primary: "#D90429"
         }
       }
     }
