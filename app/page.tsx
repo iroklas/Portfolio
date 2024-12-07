@@ -80,6 +80,16 @@ const tooltipMotionProps = {
   },
 }
 
+type ShapeProps = {
+  position?: string;
+  className?: string;
+  width?: object;
+  zIndex?: number;
+  size?: object | number | string;
+  color?: string;
+  // Add other props based on the library's documentation
+};
+
 export default function Page() {
   const [senderName, setSenderName] = useState<string>();
   const [senderEmail, setSenderEmail] = useState<string>();
@@ -89,9 +99,9 @@ export default function Page() {
   const age = new Date().getFullYear() - 2003 - (new Date() < new Date('03/03/' + new Date().getFullYear()) ? 1 : 0);
 
   // Dynamic imported components
-  const Donut = dynamic(() => import('react-awesome-shapes').then(mod => mod.Donut), { ssr: false });
-  const Circle = dynamic(() => import('react-awesome-shapes').then(mod => mod.Circle), { ssr: false });
-  const CircleGrid = dynamic(() => import('react-awesome-shapes').then(mod => mod.CircleGrid), { ssr: false });
+  const Donut = dynamic<ShapeProps>(() => import('react-awesome-shapes').then(mod => mod.Donut), { ssr: false });
+  const Circle = dynamic<ShapeProps>(() => import('react-awesome-shapes').then(mod => mod.Circle), { ssr: false });
+  const CircleGrid = dynamic<ShapeProps>(() => import('react-awesome-shapes').then(mod => mod.CircleGrid), { ssr: false });
 
   const handleSendMessage = async () => {
     await SendEmail(senderName, senderEmail, senderMessage);
