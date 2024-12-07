@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark h-full">
-      <body className="h-full bg-body">
+      <body className="h-full bg-body overflow-x-hidden">
         <Providers>{children}</Providers>
         <Analytics />
       </body>
